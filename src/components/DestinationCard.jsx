@@ -33,7 +33,7 @@ const DestinationCard = ({ destination }) => {
       <div className="flex justify-between items-center">
         <h2 className="font-bold text-[#15A1BF]">Country: {country}</h2>
         <h2 className="font-bold text-[#15A1BF] flex gap-2 items-center">
-          <ImPriceTag /> {price}
+          <ImPriceTag /> {price} $
         </h2>
       </div>
       <Link href={`/destination/${_id}`}>

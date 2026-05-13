@@ -9,7 +9,7 @@ const DeleteDialog = ({ destination }) => {
 
   const deleteDestination = async () => {
     const res = await fetch(
-      `http://127.0.0.1:5000/destination/${destination._id}`,
+      `https://wanderlust-server.vercel.app/destination/${destination._id}`,
       {
         method: "DELETE",
         headers: {

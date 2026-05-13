@@ -14,19 +14,21 @@ import React from "react";
 
 const AddDestinationPage = () => {
   const submitForm = async (e) => {
-    // "use server";
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const destination = Object.fromEntries(formData.entries());
     console.log(destination);
 
-    const res = await fetch("http://127.0.0.1:5000/destination", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
+    const res = await fetch(
+      "https://wanderlust-server.vercel.app/destination",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(destination),
       },
-      body: JSON.stringify(destination),
-    });
+    );
     const data = await res.json();
     redirect("/destination");
   };

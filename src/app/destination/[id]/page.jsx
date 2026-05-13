@@ -1,4 +1,5 @@
 import DeleteDialog from "@/components/DeleteDialog";
+import { EditModal } from "@/components/EditModal";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,9 +10,12 @@ import { ImPriceTag } from "react-icons/im";
 const DestinationDetailPage = async ({ params }) => {
   const { id } = await params;
 
-  const res = await fetch(`http://127.0.0.1:5000/destination/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://wanderlust-server.vercel.app/destination/${id}`,
+    {
+      cache: "no-store",
+    },
+  );
 
   const destination = await res.json();
 
@@ -28,26 +32,20 @@ const DestinationDetailPage = async ({ params }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
-      <div className="flex justify-end mb-5">
-        <Link href={`/destination/${_id}/edit`} className="mr-3">
-          <Button className="bg-[#15A1BF] flex gap-2 items-center rounded-lg">
-            <FaEdit />
-            Edit
-          </Button>
-        </Link>
+      <div className="flex justify-end gap-4 mb-5">
+        <EditModal destination={destination} />
         <DeleteDialog destination={destination} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Image Section */}
-        <div>
+
+        <div className="relative w-full h-[520px] overflow-hidden rounded-3xl shadow-lg">
           <Image
             src={imageUrl}
             alt={destinationName}
-            width={700}
-            height={500}
-            priority
-            className="w-full  object-cover rounded-3xl shadow-lg"
+            fill
+            className="object-cover"
           />
         </div>
 
@@ -87,7 +85,7 @@ const DestinationDetailPage = async ({ params }) => {
               <span className="font-semibold">Price:</span>
 
               <span className="text-2xl font-bold text-[#15A1BF]">
-                ${price}
+                ${price} $
               </span>
             </div>
           </div>
