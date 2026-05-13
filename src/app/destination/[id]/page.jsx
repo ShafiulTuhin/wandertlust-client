@@ -30,7 +30,7 @@ const DestinationDetailPage = async ({ params }) => {
     <div className="max-w-7xl mx-auto px-4 py-10">
       <div className="flex justify-end mb-5">
         <Link href={`/destination/${_id}/edit`} className="mr-3">
-          <Button className="bg-[#15A1BF] flex gap-2 items-center">
+          <Button className="bg-[#15A1BF] flex gap-2 items-center rounded-lg">
             <FaEdit />
             Edit
           </Button>
@@ -53,9 +53,9 @@ const DestinationDetailPage = async ({ params }) => {
 
         {/* Details Section */}
         <div className="space-y-4">
-          <h2 className="font-bold mb-5">
-            Category:{" "}
-            <span className="bg-[#15A1BF] py-2 px-4 rounded-ld text-white">
+          <h2 className="font-bold mb-5 flex gap-3 items-center">
+            Category:
+            <span className="bg-[#15A1BF] py-2 px-4 rounded-lg text-white ">
               {category}
             </span>
           </h2>
@@ -102,7 +102,7 @@ const DestinationDetailPage = async ({ params }) => {
             </p>
           </div>
 
-          <Button className="bg-[#15A1BF] text-white px-10 font-semibold mt-5">
+          <Button className="bg-[#15A1BF] text-white px-10 font-semibold mt-5 rounded-lg">
             Book Now
           </Button>
         </div>

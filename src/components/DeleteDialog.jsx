@@ -1,12 +1,29 @@
+"use client";
 import { AlertDialog, Button } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FaTrash } from "react-icons/fa";
 
 const DeleteDialog = ({ destination }) => {
+  const router = useRouter();
+
+  const deleteDestination = async () => {
+    const res = await fetch(
+      `http://127.0.0.1:5000/destination/${destination._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "appication/json",
+        },
+      },
+    );
+    await res.json();
+    router.push("/destination");
+  };
   return (
     <div>
       <AlertDialog>
-        <Button variant="danger">
+        <Button variant="danger" className="rounded-lg">
           <FaTrash /> Delete
         </Button>
         <AlertDialog.Backdrop>
@@ -30,7 +47,11 @@ const DeleteDialog = ({ destination }) => {
                 <Button slot="close" variant="tertiary">
                   Cancel
                 </Button>
-                <Button slot="close" variant="danger">
+                <Button
+                  onClick={deleteDestination}
+                  slot="close"
+                  variant="danger"
+                >
                   Delete Destination
                 </Button>
               </AlertDialog.Footer>
