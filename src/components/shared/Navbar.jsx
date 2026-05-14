@@ -4,36 +4,37 @@ import Image from "next/image";
 import { useState } from "react";
 import LogoImg from "@/assets/Wanderlast.png";
 import NavLink from "./NavLink";
-
+import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { CiUser } from "react-icons/ci";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
-  // const { data, isPending } = authClient.useSession();
+  const { data, isPending } = authClient.useSession();
 
-  // const user = data?.user;
+  const user = data?.user;
 
   const [isOpen, setIsOpen] = useState(false);
   const border = "border-1 border-[#15A1BF] rounded-lg";
 
   const router = useRouter();
-  //   const handleLogout = async () => {
-  //     try {
-  //       await authClient.signOut({
-  //         fetchOptions: {
-  //           onSuccess: () => {
-  //             router.push("/");
-  //             toast.success("Logged out successfully", {
-  //               position: "top-center",
-  //               autoClose: 5000,
-  //             });
-  //           },
-  //         },
-  //       });
-  //     } catch (error) {
-  //       toast.error("Logout failed");
-  //     }
-  //   };
+  const handleLogout = async () => {
+    try {
+      await authClient.signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            router.push("/");
+            toast.success("Logged out successfully", {
+              position: "top-center",
+              autoClose: 5000,
+            });
+          },
+        },
+      });
+    } catch (error) {
+      toast.error("Logout failed");
+    }
+  };
 
   return (
     <div className="py-5">
@@ -57,57 +58,51 @@ const Navbar = () => {
           <Image src={LogoImg} alt="Logo" width={120} height={120} />
         </Link>
 
-        {/* {isPending ? (
+        {isPending ? (
           <span className="flex justify-center items-center">Loading...</span>
         ) : user ? (
           <div className="hidden md:flex items-center gap-4">
             <div className="text-right">
-              <p className="text-green-600 font-semibold text-sm">Welcome!</p>
-              <p className="font-bold text-sm">{user?.name}</p>
+              <Link href={"/profile"}>
+                <p className="text-green-600 font-semibold text-sm">Welcome!</p>
+                <p className="font-bold text-sm">{user?.name}</p>
+              </Link>
             </div>
             <Image src={user?.image} alt={user?.name} width={40} height={40} />
-
+            <Link
+              href="/profile"
+              className=" bg-cyan-500 text-white font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
+            >
+              Profile
+            </Link>
             <button
               onClick={handleLogout}
-              className="bg-[#f59e0b] text-[#081f30] font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
+              className="bg-cyan-500 text-white font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
             >
               Logout
             </button>
           </div>
-        ) : ( */}
-        <div className="hidden md:flex items-center text-[#797979]">
-          <div className="flex gap-2 items-center">
-            <CiUser size={24} />
-            <Link href="/profile" className="font-bold">
-              Profile
+        ) : (
+          <div className="hidden md:flex items-center text-[#797979] gap-2">
+            <div className="flex items-center border-2 border-cyan-500 px-3 rounded-lg">
+              <CiUser size={20} />
+              <Link href="/login">
+                <button className="font-bold  hover:opacity-90 transition rounded-lg cursor-pointer p-2">
+                  Login
+                </button>
+              </Link>
+            </div>
+
+            <Link
+              href="/register"
+              className="border-2 border-cyan-500 px-3 rounded-lg"
+            >
+              <button className="font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2">
+                Sign up
+              </button>
             </Link>
           </div>
-
-          <Link href="/login">
-            <button className="font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2">
-              Login
-            </button>
-          </Link>
-          <Link href="/register">
-            <button className="font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2">
-              Sign up
-            </button>
-          </Link>
-
-          {/* <button
-            // onClick={handleGoogleLogin}
-            className="border border-[#f59e0b] cursor-pointer rounded-lg p-2"
-          >
-            <Image
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              alt="Google"
-              width={20}
-              height={20}
-              title="Login with google"
-            />
-          </button> */}
-        </div>
-        {/* )} */}
+        )}
 
         {/* Mobile Menu Button */}
         <button
@@ -141,57 +136,45 @@ const Navbar = () => {
         </ul>
 
         <div className="">
-          {/* {isPending ? (
+          {isPending ? (
             <span className="flex justify-center items-center">Loading...</span>
           ) : user ? (
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3">
-                <div className="md:text-start text-center">
+              <div className=" flex justify-between items-center px-5">
+                <div>
                   <p className="text-green-600 font-semibold">Welcome!</p>
                   <p className="font-bold">{user?.name}</p>
                 </div>
+
+                <Link
+                  href="/profile"
+                  className=" bg-cyan-500 text-white font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
+                >
+                  Profile
+                </Link>
               </div>
 
               <button
                 onClick={handleLogout}
-                className="btn bg-[#f59e0b] text-[#081f30] hover:opacity-90 transition font-bold cursor-pointer py-2  rounded-lg w-full"
+                className="btn bg-cyan-500 text-white hover:opacity-90 transition font-bold cursor-pointer py-2  rounded-lg w-full"
               >
                 Logout
               </button>
             </div>
-          ) : ( */}
-          <div className="flex gap-3 items-center justify-between text-[#797979]">
-            <div className="flex gap-2 items-center border border-[#15A1BF] p-2 rounded-lg">
-              <CiUser size={18} />
-              <Link href="/profile" className="font-bold">
-                Profile
+          ) : (
+            <div className="flex gap-3 items-center justify-center text-[#797979] ">
+              <Link href="/login">
+                <button className="font-bold  cursor-pointer  py-2 px-4 border-2 border-[#15A1BF] p-2 rounded-lg">
+                  Login
+                </button>
+              </Link>
+              <Link href="/register">
+                <button className="font-bold cursor-pointer py-2 border-2 px-4 border-[#15A1BF] p-2 rounded-lg">
+                  Sign up
+                </button>
               </Link>
             </div>
-            <Link href="/login">
-              <button className="font-bold  cursor-pointer  py-2 px-4 border border-[#15A1BF] p-2 rounded-lg">
-                Login
-              </button>
-            </Link>
-            <Link href="/register">
-              <button className="font-bold cursor-pointer py-2 border border-[#15A1BF] p-2 rounded-lg">
-                Sign up
-              </button>
-            </Link>
-            {/* <button
-                onClick={handleGoogleLogin}
-              className="flex gap-2 border items-center justify-center border-[#f59e0b] py-2 w-full  text-[#081f30] font-bold rounded-lg mx-auto "
-            >
-              <Image
-                src="https://www.svgrepo.com/show/475656/google-color.svg"
-                alt="Google"
-                // className="w-5 h-5"
-                width={20}
-                height={20}
-              />
-              Continue with google
-            </button> */}
-          </div>
-          {/* )} */}
+          )}
         </div>
       </div>
     </div>
