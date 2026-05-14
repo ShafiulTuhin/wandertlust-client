@@ -1,5 +1,6 @@
 import BookingCancelAlert from "@/components/BookingCancelAlert";
 import { auth } from "@/lib/auth";
+import { authClient } from "@/lib/auth-client";
 import { headers } from "next/headers";
 import Image from "next/image";
 import React from "react";
@@ -8,11 +9,19 @@ const MyBookingPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(), // you need to pass the headers object.
   });
-
   const user = session?.user;
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  console.log(token);
 
   const res = await fetch(
     `https://wanderlust-server.vercel.app/booking/${user.id}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    },
   );
   const bookings = await res.json();
 
