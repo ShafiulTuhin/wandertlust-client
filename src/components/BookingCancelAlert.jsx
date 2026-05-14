@@ -5,7 +5,7 @@ import { FaTrash } from "react-icons/fa";
 
 const BookingCancelAlert = ({ booking }) => {
   const { _id, destinationName } = booking;
-  console.log(_id);
+  // console.log(_id);
 
   const handleCancelBooking = async () => {
     const res = await fetch(
