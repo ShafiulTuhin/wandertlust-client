@@ -10,13 +10,14 @@ const BookingCard = ({ destination }) => {
 
   const { data } = authClient.useSession();
   const user = data?.user;
+
   const router = useRouter();
 
   const handleBooking = async () => {
     const myBookings = {
-      userId: user.id,
-      userImage: user.image,
-      userName: user.name,
+      userId: user?.id,
+      userImage: user?.image,
+      userName: user?.name,
       destinationId: destination._id,
       destinationName: destination.destinationName,
       price: destination.price,
