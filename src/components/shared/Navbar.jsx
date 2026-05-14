@@ -68,7 +68,13 @@ const Navbar = () => {
                 <p className="font-bold text-sm">{user?.name}</p>
               </Link>
             </div>
-            <Image src={user?.image} alt={user?.name} width={40} height={40} />
+            <Image
+              src={user?.image}
+              alt={user?.name}
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
             <Link
               href="/profile"
               className=" bg-cyan-500 text-white font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"

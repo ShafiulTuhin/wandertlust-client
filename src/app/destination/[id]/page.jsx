@@ -1,6 +1,6 @@
+import BookingCard from "@/components/BookingCard";
 import DeleteDialog from "@/components/DeleteDialog";
 import { EditModal } from "@/components/EditModal";
-import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -90,7 +90,7 @@ const DestinationDetailPage = async ({ params }) => {
             </div>
           </div>
 
-          <div className="mb-10">
+          <div className="mb-5">
             <h2 className="text-2xl font-bold text-[#15A1BF] mb-4">
               About Tour
             </h2>
@@ -100,9 +100,7 @@ const DestinationDetailPage = async ({ params }) => {
             </p>
           </div>
 
-          <Button className="bg-[#15A1BF] text-white px-10 font-semibold mt-5 rounded-lg">
-            Book Now
-          </Button>
+          <BookingCard destination={destination} />
         </div>
       </div>
     </div>
