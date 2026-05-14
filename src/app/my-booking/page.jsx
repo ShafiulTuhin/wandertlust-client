@@ -34,12 +34,14 @@ const MyBookingPage = async () => {
           className="md:flex justify-between border p-5 mb-5 rounded-lg"
         >
           <div className="flex gap-5 items-center md:mb-0 mb-4">
-            <Image
-              src={booking.destinationImage}
-              alt={booking.destinationName}
-              height={200}
-              width={200}
-            />
+            <div className="w-[200px] h-[200px] relative">
+              <Image
+                src={booking.destinationImage}
+                alt={booking.destinationName}
+                fill
+                className="object-cover rounded-md"
+              />
+            </div>
             <div>
               <h1 className="font-bold text-2xl">{booking.destinationName}</h1>
               <p>
