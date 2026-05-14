@@ -14,6 +14,18 @@ const BookingCard = ({ destination }) => {
   const router = useRouter();
 
   const handleBooking = async () => {
+    // Check login first
+    if (!user) {
+      toast.error("Please login first");
+      router.push("/login");
+      return;
+    }
+
+    // Check date
+    if (!departureDate) {
+      toast.error("Please select a departure date");
+      return;
+    }
     const myBookings = {
       userId: user?.id,
       userImage: user?.image,
@@ -44,7 +56,12 @@ const BookingCard = ({ destination }) => {
 
   return (
     <div className="flex gap-10 items-center">
-      <DateField onChange={setDepartureDate} className="w-[256px]" name="date">
+      <DateField
+        onChange={setDepartureDate}
+        className="w-[256px]"
+        name="date"
+        isRequired
+      >
         <Label>Departure Date</Label>
         <DateField.Group>
           <DateField.Input>
