@@ -7,6 +7,11 @@ import React from "react";
 import { FaMapMarkerAlt, FaCalendarAlt, FaEdit } from "react-icons/fa";
 import { ImPriceTag } from "react-icons/im";
 
+export const metadata = {
+  title: "Wanderlust",
+  description: "Book your favorite place to tour",
+};
+
 const DestinationDetailPage = async ({ params }) => {
   const { id } = await params;
 

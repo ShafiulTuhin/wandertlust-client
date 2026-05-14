@@ -3,6 +3,11 @@ import { Button } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+  title: "Wanderlust | Destinations",
+  description: "Find your choice,get refreshment",
+};
+
 const DestinationPage = async () => {
   const res = await fetch("https://wanderlust-server.vercel.app/destination");
   const destinations = await res.json();
