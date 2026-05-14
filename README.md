@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+✈️ Wanderlust — Travel Booking Platform
 
-## Getting Started
+A full-stack travel booking web application built with Next.js, Express.js, and MongoDB.
+The platform includes secure authentication, protected routes, and full CRUD functionality for managing travel destinations and bookings.
 
-First, run the development server:
+🚀 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔗 https://wandertlust-client.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🛠️ Tech Stack
+Frontend
+Next.js
+React
+Tailwind CSS
+Hero UI
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Backend
+Node.js
+Express.js
+MongoDB
+JWT Authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🧩 Backend Setup
+The backend is built with Express.js and MongoDB using the following dependencies:
+npm install express cors dotenv mongodb jose-cjs
 
-## Learn More
+📦 Backend Dependencies
+express → Fast and minimalist web framework for APIs
+cors → Enables cross-origin communication between frontend and backend
+dotenv → Manages environment variables securely
+mongodb → Official MongoDB driver for database operations
+jose-cjs → Handles JWT token generation and verification
 
-To learn more about Next.js, take a look at the following resources:
+🎨 Frontend Setup
+The frontend is built with Next.js and modern React ecosystem tools:
+npm install next react react-dom better-auth @better-auth/mongo-adapter mongodb jose-cjs react-hook-form react-icons react-toastify @heroui/react @heroui/styles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📦 Frontend Dependencies
+next → React framework for server-side rendering and routing
+react / react-dom → Core UI library
+better-auth → Authentication system for secure login/register flow
+@better-auth/mongo-adapter → MongoDB integration for authentication
+mongodb → Database access layer (used for direct DB operations if needed)
+jose-cjs → JWT handling and verification
+react-hook-form → Efficient form handling and validation
+react-icons → Icon library for UI enhancement
+react-toastify → Toast notifications for user feedback
+@heroui/react & @heroui/styles → UI component library
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🛠️ Development Dependencies
+npm install -D tailwindcss @tailwindcss/postcss eslint eslint-config-next babel-plugin-react-compiler
+tailwindcss → Utility-first CSS framework for styling
+@tailwindcss/postcss → PostCSS integration for Tailwind
+eslint → Code quality and linting
+eslint-config-next → Official Next.js linting configuration
+babel-plugin-react-compiler → React compiler optimization plugin
 
-## Deploy on Vercel
+📌 Project Highlights
+Secure JWT-based authentication system
+Protected routes for authenticated users
+Full CRUD operations for destinations & bookings
+Responsive and modern UI design
+Clean API architecture using Express.js
+MongoDB-based flexible data modeling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+📬 Contact
+GitHub: https://github.com/ShafiulTuhin
+LinkedIn: https://www.linkedin.com/in/shafiul-tuhin
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⭐ Final Note
+This project was built to strengthen full-stack development skills, including authentication flow, REST API design, database integration, and real-world deployment practices.
