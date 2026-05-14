@@ -35,7 +35,7 @@ const BookingCard = ({ destination }) => {
     const bookingData = await res.json();
     if (bookingData) {
       toast.success(
-        `Congratulations! ${myBookings.destinationName} confirmed as your booking successfully`,
+        `Congratulations! ${myBookings.destinationName} booked successfully`,
       );
       router.push("/my-booking");
     }
