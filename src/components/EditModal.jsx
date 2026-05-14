@@ -36,6 +36,7 @@ export function EditModal({ destination }) {
     const res = await fetch(
       `https://wanderlust-server.vercel.app/destination/${_id}`,
       {
+        cache: "no-store",
         method: "PATCH",
         headers: {
           "content-type": "application/json",

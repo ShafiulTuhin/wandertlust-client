@@ -9,7 +9,9 @@ export const metadata = {
 };
 
 const DestinationPage = async () => {
-  const res = await fetch("https://wanderlust-server.vercel.app/destination");
+  const res = await fetch("https://wanderlust-server.vercel.app/destination", {
+    cache: "no-store",
+  });
   const destinations = await res.json();
   // console.log(destinations);
 
