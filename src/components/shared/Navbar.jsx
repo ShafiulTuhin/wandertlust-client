@@ -134,7 +134,7 @@ const Navbar = () => {
             <NavLink href="/destination">Destinations</NavLink>
           </li>
           <li className={`${border}`}>
-            <NavLink href="/my-bookings">My Bookings</NavLink>
+            <NavLink href="/my-booking">My Bookings</NavLink>
           </li>
           <li className={`${border}`}>
             <NavLink href="/admin">Admin</NavLink>
